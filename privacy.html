@@ -380,7 +380,14 @@
 
       <h2><span class="num">04</span>Pubblicità con video a premio</h2>
       <p>Chaos Whiskers mostra annunci esclusivamente sotto forma di video a premio, e solo quando sei tu a sceglierlo, per ottenere un indizio o accedere a un livello di un mondo premium. L'app non mostra banner né annunci a schermo intero che partono da soli.</p>
-      <p>I video sono forniti da <strong>Google AdMob</strong>. Per mostrare e misurare gli annunci e prevenire le frodi, Google può raccogliere dati come l'ID pubblicità del dispositivo, l'indirizzo IP, informazioni tecniche sul dispositivo e sul sistema operativo, e le interazioni con gli annunci. Se hai dato il consenso, gli annunci possono essere personalizzati; in caso contrario Google mostra annunci non personalizzati, secondo le proprie regole.</p>
+      <p>I video sono forniti da <strong>Google AdMob</strong>. Per avere un video pronto quando lo chiedi, l'SDK di Google Mobile Ads si avvia all'apertura dell'app e, se il consenso lo permette, carica un annuncio in anticipo. Da quel momento Google può raccogliere e trattare:</p>
+      <ul>
+        <li><strong>ID dispositivo o altri ID</strong>, come l'ID pubblicità;</li>
+        <li><strong>posizione approssimativa</strong>, ricavata dall'indirizzo IP (l'app non chiede l'accesso alla posizione del dispositivo);</li>
+        <li><strong>interazioni con l'app</strong> relative agli annunci, come visualizzazioni e tocchi;</li>
+        <li><strong>dati diagnostici</strong>, come informazioni tecniche sul dispositivo, sul sistema operativo e sulle prestazioni dell'SDK.</li>
+      </ul>
+      <p>Questi dati vengono usati per mostrare e misurare gli annunci, per analisi statistiche sul loro funzionamento e per prevenire frodi e abusi. Se hai dato il consenso, gli annunci possono essere personalizzati; in caso contrario Google mostra annunci non personalizzati, secondo le proprie regole.</p>
       <p>Questi dati sono trattati da Google in qualità di titolare autonomo, secondo le sue norme: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">come Google utilizza i dati dei siti e delle app dei partner</a> e l'<a href="https://policies.google.com/privacy" rel="noopener">informativa sulla privacy di Google</a>.</p>
 
       <h2><span class="num">05</span>Consenso e opzioni privacy degli annunci</h2>
@@ -395,15 +402,15 @@
       <h2><span class="num">07</span>Servizi di terze parti</h2>
       <p class="service"><strong>Google AdMob</strong>Video a premio e gestione del consenso pubblicitario.</p>
       <p class="service"><strong>Google Play</strong>Pagamenti, acquisti in-app e ripristino degli acquisti.</p>
-      <p class="service"><strong><span class="placeholder">[SERVIZIO DI VERIFICA RICEVUTE]</span></strong>Verifica della validità delle ricevute di acquisto.</p>
       <p>Durante le normali comunicazioni via Internet, questi fornitori ricevono informazioni tecniche necessarie a gestire le richieste di rete, come l'indirizzo IP, secondo le rispettive informative.</p>
 
       <h2><span class="num">08</span>Analytics e profilazione</h2>
-      <p>Chaos Whiskers non integra servizi di analytics e non traccia come giochi. Lo sviluppatore non crea profili degli utenti. L'eventuale personalizzazione degli annunci è gestita da Google e dipende dal consenso descritto sopra.</p>
+      <p>Lo sviluppatore non integra propri servizi di analytics, non registra come giochi e non crea profili degli utenti. Le uniche analisi sono quelle svolte da Google AdMob sugli annunci, descritte nella sezione 04. L'eventuale personalizzazione degli annunci è gestita da Google e dipende dal consenso descritto nella sezione 05.</p>
 
       <h2><span class="num">09</span>Conservazione ed eliminazione</h2>
       <p>I dati di gioco restano sul dispositivo finché non li cancelli. <strong>Azzera progressi</strong> nelle impostazioni elimina livelli, stelle e indizi, conservando acquisti e preferenze. Cancellare i dati dell'app o disinstallarla elimina tutti i dati locali; gli acquisti restano associati al tuo account Google.</p>
       <p>I dati raccolti da Google e dal servizio di verifica sono conservati secondo le rispettive politiche.</p>
+      <p id="eliminazione"><strong>Come chiedere l'eliminazione dei dati.</strong> Lo sviluppatore non conserva dati di gioco sui propri server. Puoi comunque scrivere ai contatti indicati sotto per chiedere l'eliminazione di qualsiasi dato che ti riguarda, comprese le ricevute di acquisto trattate dal servizio di verifica. Risponderemo entro 30 giorni. Per i dati pubblicitari puoi anche reimpostare o eliminare l'ID pubblicità dalle impostazioni di Android e usare gli strumenti di Google su <a href="https://myaccount.google.com/data-and-privacy" rel="noopener">myaccount.google.com</a>.</p>
 
       <h2><span class="num">10</span>I tuoi diritti</h2>
       <p>Ai sensi del Regolamento (UE) 2016/679 (GDPR) hai diritto di accesso, rettifica, cancellazione, limitazione e opposizione al trattamento, e di revocare il consenso in qualsiasi momento senza pregiudicare la liceità del trattamento precedente. Poiché lo sviluppatore non conserva dati di gioco sui propri server, la maggior parte di questi diritti si esercita direttamente dall'app o dal tuo dispositivo; per i dati trattati da Google puoi rivolgerti a Google. Per qualsiasi richiesta puoi scrivere ai contatti indicati sotto.</p>
@@ -447,7 +454,14 @@
 
       <h2><span class="num">04</span>Rewarded video ads</h2>
       <p>Chaos Whiskers shows ads only as rewarded videos, and only when you choose to watch one, to get a hint or to enter a level in a premium world. The app does not show banners or full-screen ads that start on their own.</p>
-      <p>Videos are provided by <strong>Google AdMob</strong>. To serve and measure ads and to prevent fraud, Google may collect data such as your device's advertising ID, IP address, technical information about your device and operating system, and your interactions with ads. If you have given consent, ads may be personalized; otherwise Google serves non-personalized ads, according to its own rules.</p>
+      <p>Videos are provided by <strong>Google AdMob</strong>. So that a video is ready when you ask for one, the Google Mobile Ads SDK starts when the app opens and, if consent allows it, preloads an ad. From that moment Google may collect and process:</p>
+      <ul>
+        <li><strong>device or other IDs</strong>, such as the advertising ID;</li>
+        <li><strong>approximate location</strong>, derived from your IP address (the app does not request access to your device's location);</li>
+        <li><strong>app interactions</strong> related to ads, such as views and taps;</li>
+        <li><strong>diagnostics</strong>, such as technical information about your device, operating system and SDK performance.</li>
+      </ul>
+      <p>This data is used to serve and measure ads, for statistical analysis of how they perform, and to prevent fraud and abuse. If you have given consent, ads may be personalized; otherwise Google serves non-personalized ads, according to its own rules.</p>
       <p>This data is processed by Google as an independent controller, under its own policies: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses information from partner sites and apps</a> and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.</p>
 
       <h2><span class="num">05</span>Consent and ad privacy options</h2>
@@ -462,15 +476,15 @@
       <h2><span class="num">07</span>Third-party services</h2>
       <p class="service"><strong>Google AdMob</strong>Rewarded videos and advertising consent management.</p>
       <p class="service"><strong>Google Play</strong>Payments, in-app purchases and purchase restoration.</p>
-      <p class="service"><strong><span class="placeholder">[RECEIPT VERIFICATION SERVICE]</span></strong>Verification of purchase receipts.</p>
       <p>During normal Internet communications, these providers receive technical information needed to handle network requests, such as your IP address, in accordance with their respective policies.</p>
 
       <h2><span class="num">08</span>Analytics and profiling</h2>
-      <p>Chaos Whiskers does not include analytics services and does not track how you play. The developer does not build user profiles. Any ad personalization is handled by Google and depends on the consent described above.</p>
+      <p>The developer does not integrate its own analytics services, does not record how you play and does not build user profiles. The only analysis is performed by Google AdMob on ads, as described in section 04. Any ad personalization is handled by Google and depends on the consent described in section 05.</p>
 
       <h2><span class="num">09</span>Retention and deletion</h2>
       <p>Game data stays on your device until you delete it. <strong>Reset progress</strong> in Settings deletes levels, stars and hints while keeping purchases and preferences. Clearing the app's data or uninstalling it deletes all local data; purchases remain tied to your Google account.</p>
       <p>Data collected by Google and by the verification service is retained according to their respective policies.</p>
+      <p id="deletion"><strong>How to request data deletion.</strong> The developer does not keep game data on its own servers. You can still write to the contact below to request deletion of any data about you, including purchase receipts processed by the verification service. We will reply within 30 days. For advertising data, you can also reset or delete your advertising ID in Android settings and use Google's tools at <a href="https://myaccount.google.com/data-and-privacy" rel="noopener">myaccount.google.com</a>.</p>
 
       <h2><span class="num">10</span>Your rights</h2>
       <p>Under Regulation (EU) 2016/679 (GDPR), you have the right to access, rectify, erase, restrict and object to the processing of your data, and to withdraw consent at any time without affecting the lawfulness of prior processing. Since the developer does not store game data on its own servers, most of these rights are exercised directly in the app or on your device; for data processed by Google, you can contact Google. For any request, you can write to the contact below.</p>
