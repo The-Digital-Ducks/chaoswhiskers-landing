@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F5EDE1">
+<meta name="description" content="Chaos Whiskers: la grande fuga di Mou. Un puzzle di pianificazione per Android: piazza i comandi sulla linea del tempo, premi Avvia e guarda se il piano regge.">
+<title>Chaos Whiskers · La grande fuga di Mou</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F5EDE1'/%3E%3Cpath d='M20 22l-3-10 11 6h8l11-6-3 10a14 12 0 1 1-24 0z' fill='%23F2A65A'/%3E%3Ccircle cx='26' cy='31' r='3' fill='%233C3346'/%3E%3Ccircle cx='38' cy='31' r='3' fill='%233C3346'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root{
+    --paper:#F5EDE1;
+    --paper2:#EADFCE;
+    --card:#FFFDF8;
+    --ink:#3C3346;
+    --ink-soft:#6C6275;
+    --accent:#F2A65A;
+    --accent-d:#D9823A;
+    --accent-text:#B5621F;
+    --good:#79BE9C;
+    --good-d:#4F9C79;
+    --gold:#E9B949;
+    --blue:#8390CB;
+    --line:#DFD0B8;
+    --sh:0 2px 0 rgba(60,51,70,.10), 0 8px 20px rgba(60,51,70,.08);
+    --round: ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+
+  body{
+    margin:0;
+    padding:0 20px;
+    padding-bottom:env(safe-area-inset-bottom, 0px);
+    font-family:var(--round);
+    font-size:1.0625rem;
+    line-height:1.6;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(60,51,70,.07) 1px, transparent 1.5px) 0 0/22px 22px,
+      var(--paper);
+  }
+
+  ::selection{ background:var(--accent); color:#3B2A14; }
+  a{ color:var(--accent-text); font-weight:700; text-underline-offset:3px; }
+  :focus-visible{ outline:3px solid var(--accent-d); outline-offset:3px; border-radius:8px; }
+
+  .wrap{ max-width:980px; margin:0 auto; }
+
+  /* ---------- Barra ---------- */
+
+  .top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:18px 0;
+    padding-top:calc(18px + env(safe-area-inset-top, 0px));
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; text-decoration:none; color:var(--ink); }
+  .brand svg{ width:36px; height:36px; }
+
+  .lang-switch{ display:none; }
+  .js .lang-switch{
+    display:flex;
+    gap:2px;
+    padding:3px;
+    border-radius:999px;
+    background:var(--card);
+    box-shadow:var(--sh);
+  }
+  .lang-switch button{
+    appearance:none; border:0; cursor:pointer;
+    padding:6px 12px;
+    border-radius:999px;
+    background:transparent;
+    color:var(--ink-soft);
+    font:inherit; font-size:.8125rem; font-weight:800;
+  }
+  .lang-switch button[aria-pressed="true"]{ background:var(--accent); color:#3B2A14; }
+
+  /* ---------- Hero ---------- */
+
+  .hero{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    align-items:center;
+    gap:48px;
+    padding:clamp(32px,7vw,72px) 0 clamp(48px,8vw,88px);
+  }
+
+  .title{
+    margin:0;
+    font-size:clamp(3rem,9vw,5rem);
+    line-height:.92;
+    font-weight:800;
+    letter-spacing:-.035em;
+  }
+  .title span{ display:block; color:var(--accent-d); }
+
+  .sub{ margin:16px 0 4px; font-size:1.25rem; font-weight:800; }
+  .tagline{ margin:0 0 28px; color:var(--ink-soft); font-size:1.125rem; max-width:30ch; }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 28px;
+    border-radius:18px;
+    background:var(--accent);
+    color:#3B2A14;
+    font-weight:800;
+    font-size:1.125rem;
+    text-decoration:none;
+    box-shadow:0 3px 0 var(--accent-d), 0 10px 20px rgba(217,130,58,.25);
+    transition:transform .08s ease;
+  }
+  .cta:hover{ color:#3B2A14; filter:brightness(1.03); }
+  .cta:active{ transform:translateY(2px); box-shadow:0 1px 0 var(--accent-d); }
+  .cta svg{ width:20px; height:20px; }
+
+  .note{ margin:14px 0 0; font-size:.875rem; color:var(--ink-soft); }
+
+  /* ---------- Demo della linea del tempo ---------- */
+
+  .demo{
+    padding:22px 22px 18px;
+    border-radius:24px;
+    background:var(--card);
+    box-shadow:var(--sh);
+  }
+  .demo svg{ display:block; width:100%; height:auto; }
+  .demo figcaption{
+    margin-top:10px;
+    text-align:center;
+    font-size:.875rem;
+    color:var(--ink-soft);
+  }
+
+  .demo .cat-sprite{ animation:walk 6s linear infinite; }
+  .demo .cone{ animation:cone 6s linear infinite; }
+  .demo .playhead{ animation:beat 6s steps(1,end) infinite; }
+  .demo .exit-glow{ animation:win 6s ease infinite; }
+
+  /* un beat = 0,6 s = 10% del ciclo */
+  @keyframes walk{
+    0%  { transform:translateX(0);   opacity:0; }
+    3%  { transform:translateX(0);   opacity:1; }
+    10% { transform:translateX(56px); }
+    20% { transform:translateX(112px); }
+    40% { transform:translateX(112px); }
+    50% { transform:translateX(168px); }
+    60% { transform:translateX(224px); }
+    70% { transform:translateX(280px); }
+    80% { transform:translateX(325px); opacity:1; }
+    94% { transform:translateX(325px); opacity:1; }
+    100%{ transform:translateX(325px); opacity:0; }
+  }
+  @keyframes cone{
+    0%, 36% { opacity:1; }
+    42%, 94%{ opacity:0; }
+    100%    { opacity:1; }
+  }
+  @keyframes win{
+    0%, 78% { opacity:0; }
+    84%, 94%{ opacity:1; }
+    100%    { opacity:0; }
+  }
+  @keyframes beat{
+    0%  { transform:translateX(0); }
+    10% { transform:translateX(44px); }
+    20% { transform:translateX(88px); }
+    30% { transform:translateX(132px); }
+    40% { transform:translateX(176px); }
+    50% { transform:translateX(220px); }
+    60% { transform:translateX(264px); }
+    70% { transform:translateX(308px); }
+    80% { transform:translateX(308px); opacity:0; }
+    100%{ transform:translateX(0); opacity:0; }
+  }
+
+  /* ---------- Sezioni ---------- */
+
+  section.block{ padding:clamp(44px,7vw,72px) 0; border-top:2px dashed var(--line); }
+
+  .block h2{
+    margin:0 0 28px;
+    font-size:clamp(1.6rem,4vw,2.1rem);
+    line-height:1.1;
+    font-weight:800;
+    letter-spacing:-.02em;
+  }
+
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin:0; padding:0; list-style:none;
+    counter-reset:step;
+  }
+  .steps li{
+    counter-increment:step;
+    padding:22px;
+    border-radius:18px;
+    background:var(--card);
+    box-shadow:var(--sh);
+  }
+  .steps li::before{
+    content:counter(step);
+    display:inline-grid;
+    place-items:center;
+    width:34px; height:34px;
+    margin-bottom:12px;
+    border-radius:11px;
+    background:var(--accent);
+    box-shadow:0 3px 0 var(--accent-d);
+    color:#3B2A14;
+    font-weight:800;
+  }
+  .steps b{ display:block; font-size:1.125rem; margin-bottom:4px; }
+  .steps p{ margin:0; color:var(--ink-soft); }
+
+  .worlds{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:12px;
+    margin:0; padding:0; list-style:none;
+  }
+  .worlds li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:16px;
+    background:var(--card);
+    box-shadow:0 1px 0 rgba(60,51,70,.08);
+    font-weight:700;
+  }
+  .worlds i{
+    flex:none;
+    width:14px; height:14px;
+    border-radius:5px;
+    background:var(--c);
+    box-shadow:0 2px 0 rgba(60,51,70,.18);
+  }
+  .worlds span{ flex:1; line-height:1.25; }
+  .tag{
+    flex:none;
+    padding:2px 9px;
+    border-radius:999px;
+    font-size:.75rem;
+    font-weight:800;
+    font-style:normal;
+    background:rgba(121,190,156,.25);
+    color:#2F6E52;
+  }
+  .worlds-note{ margin:18px 0 0; color:var(--ink-soft); max-width:60ch; }
+
+  .facts{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:24px 32px;
+    margin:0; padding:0; list-style:none;
+  }
+  .facts b{ display:block; font-size:1.125rem; }
+  .facts p{ margin:4px 0 0; color:var(--ink-soft); }
+
+  .final{
+    text-align:center;
+    padding:clamp(56px,9vw,96px) 0;
+    border-top:2px dashed var(--line);
+  }
+  .final h2{ margin:0 0 22px; font-size:clamp(1.8rem,5vw,2.6rem); letter-spacing:-.02em; line-height:1.1; }
+
+  footer{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:10px 24px;
+    padding:24px 0 36px;
+    border-top:2px dashed var(--line);
+    font-size:.875rem;
+    color:var(--ink-soft);
+  }
+  footer nav{ display:flex; gap:18px; flex-wrap:wrap; }
+
+  .placeholder{
+    padding:1px 7px;
+    border-radius:6px;
+    background:rgba(242,166,90,.2);
+    color:var(--accent-text);
+    font-weight:700;
+  }
+
+  /* ---------- Lingue ---------- */
+
+  body[data-lang="it"] [lang="en"]{ display:none !important; }
+  body[data-lang="en"] [lang="it"]{ display:none !important; }
+
+  /* ---------- Accessibilità ---------- */
+
+  @media (prefers-reduced-motion:reduce){
+    .demo .cat-sprite, .demo .cone, .demo .playhead, .demo .exit-glow{ animation:none; }
+    .demo .cat-sprite{ transform:translateX(325px); }
+    .demo .cone, .demo .playhead{ opacity:0; }
+    .demo .exit-glow{ opacity:1; }
+  }
+
+  /* ---------- Mobile ---------- */
+
+  @media (max-width:760px){
+    body{ font-size:1rem; padding:0 16px; }
+    .hero{ grid-template-columns:1fr; gap:36px; text-align:center; }
+    .tagline{ margin-left:auto; margin-right:auto; }
+    .steps{ grid-template-columns:1fr; }
+    .demo{ padding:16px 14px 14px; }
+  }
+</style>
+</head>
+
+<body data-lang="it">
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#FFFDF8"/>
+        <path d="M20 22l-3-10 11 6h8l11-6-3 10a14 12 0 1 1-24 0z" fill="#F2A65A"/>
+        <circle cx="26" cy="31" r="3" fill="#3C3346"/>
+        <circle cx="38" cy="31" r="3" fill="#3C3346"/>
+      </svg>
+      Chaos Whiskers
+    </a>
+    <nav class="lang-switch" aria-label="Lingua / Language">
+      <button type="button" data-set-lang="it" aria-pressed="true">IT</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div>
+      <h1 class="title">Chaos<span>Whiskers</span></h1>
+      <p class="sub">
+        <span lang="it">La grande fuga di Mou</span>
+        <span lang="en">Mou’s Great Escape</span>
+      </p>
+      <p class="tagline">
+        <span lang="it">Programma la fuga. Poi trattieni il respiro.</span>
+        <span lang="en">Plan the escape. Then hold your breath.</span>
+      </p>
+
+      <a class="cta" href="https://play.google.com/store/apps/details?id=com.digitalducks.chaoswhiskers" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z" fill="currentColor"/></svg>
+        <span lang="it">Scarica su Google Play</span>
+        <span lang="en">Get it on Google Play</span>
+      </a>
+      <p class="note">
+        <span lang="it">Gratis su Android · 20 livelli sempre gratuiti</span>
+        <span lang="en">Free on Android · 20 levels always free</span>
+      </p>
+    </div>
+
+    <figure class="demo" style="margin:0">
+      <svg viewBox="0 0 420 250" role="img" aria-labelledby="demo-it demo-en">
+        <title id="demo-it" lang="it">Mou avanza, aspetta che passi la guardia e raggiunge l'uscita</title>
+        <title id="demo-en" lang="en">Mou walks, waits for the guard to pass and reaches the exit</title>
+
+        <!-- stanza -->
+        <rect x="14" y="14" width="392" height="136" rx="14" fill="#C3B29B"/>
+        <rect x="22" y="22" width="376" height="120" rx="10" fill="#F1E6D5"/>
+
+        <!-- guardia e cono visivo -->
+        <g class="cone">
+          <path d="M210 44 L178 142 L242 142 Z" fill="rgba(246,196,83,.38)" stroke="rgba(240,176,60,.6)" stroke-width="1.5" stroke-linejoin="round"/>
+        </g>
+        <circle cx="210" cy="40" r="13" fill="#8390CB"/>
+        <circle cx="210" cy="40" r="13" fill="none" stroke="#5F6DA6" stroke-width="3"/>
+
+        <!-- corsia -->
+        <g fill="#EADDC9" stroke="#DFD0B8" stroke-width="1.5">
+          <rect x="30"  y="94" width="52" height="44" rx="8"/>
+          <rect x="86"  y="94" width="52" height="44" rx="8"/>
+          <rect x="142" y="94" width="52" height="44" rx="8"/>
+          <rect x="198" y="94" width="52" height="44" rx="8" fill="#F3DFB4"/>
+          <rect x="254" y="94" width="52" height="44" rx="8"/>
+          <rect x="310" y="94" width="52" height="44" rx="8"/>
+        </g>
+        <rect x="366" y="94" width="30" height="44" rx="8" fill="#79BE9C"/>
+        <rect class="exit-glow" x="362" y="90" width="38" height="52" rx="11" fill="none" stroke="#4F9C79" stroke-width="3"/>
+        <path d="M374 116h12m-5-5 5 5-5 5" fill="none" stroke="#FFFDF8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- Mou -->
+        <g class="cat-sprite">
+          <g transform="translate(36 96) scale(.62)">
+            <ellipse cx="32" cy="64" rx="15" ry="3.5" fill="rgba(60,51,70,.14)"/>
+            <path d="M20 22l-3-10 11 6h8l11-6-3 10a14 12 0 1 1-24 0z" fill="#F2A65A" stroke="#D98237" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="26" cy="31" r="3" fill="#3C3346"/>
+            <circle cx="38" cy="31" r="3" fill="#3C3346"/>
+          </g>
+        </g>
+
+        <!-- linea del tempo -->
+        <g font-family="ui-rounded, 'SF Pro Rounded', system-ui, sans-serif" font-weight="800" font-size="15" text-anchor="middle">
+          <rect x="30" y="178" width="360" height="54" rx="14" fill="#EADFCE"/>
+          <g fill="#FFFDF8" stroke="#DFD0B8" stroke-width="1.5">
+            <rect x="40"  y="188" width="38" height="34" rx="9"/>
+            <rect x="84"  y="188" width="38" height="34" rx="9"/>
+            <rect x="128" y="188" width="38" height="34" rx="9" fill="#F2A65A" stroke="#D9823A"/>
+            <rect x="172" y="188" width="38" height="34" rx="9" fill="#F2A65A" stroke="#D9823A"/>
+            <rect x="216" y="188" width="38" height="34" rx="9"/>
+            <rect x="260" y="188" width="38" height="34" rx="9"/>
+            <rect x="304" y="188" width="38" height="34" rx="9"/>
+            <rect x="348" y="188" width="38" height="34" rx="9"/>
+          </g>
+          <g fill="#3B2A14">
+            <text x="147" y="210">❚❚</text>
+            <text x="191" y="210">❚❚</text>
+          </g>
+          <g fill="#C3B29B">
+            <circle cx="59"  cy="205" r="3"/>
+            <circle cx="103" cy="205" r="3"/>
+            <circle cx="235" cy="205" r="3"/>
+            <circle cx="279" cy="205" r="3"/>
+            <circle cx="323" cy="205" r="3"/>
+            <circle cx="367" cy="205" r="3"/>
+          </g>
+          <rect class="playhead" x="37" y="185" width="44" height="40" rx="11" fill="none" stroke="#3C3346" stroke-width="3"/>
+        </g>
+      </svg>
+      <figcaption>
+        <span lang="it">Due attese nel punto giusto, e la guardia non vede niente.</span>
+        <span lang="en">Two waits at the right moment, and the guard sees nothing.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ COME SI GIOCA ============ -->
+  <section class="block">
+    <h2>
+      <span lang="it">Come si gioca</span>
+      <span lang="en">How to play</span>
+    </h2>
+    <ol class="steps">
+      <li lang="it"><b>Piazza i comandi</b><p>Gira, aspetta, salta, lancia un sasso o tira una leva: ogni comando occupa un battito sulla linea del tempo.</p></li>
+      <li lang="it"><b>Premi Avvia</b><p>Non controlli Mou in tempo reale. Guardie e telecamere seguono il loro giro, Mou segue il tuo piano.</p></li>
+      <li lang="it"><b>Correggi e riprova</b><p>Visto? Modifica il piano e riparti. Usa meno comandi e prendi il pesciolino d'oro per le tre stelle.</p></li>
+
+      <li lang="en"><b>Place your commands</b><p>Turn, wait, jump, throw a pebble or pull a lever: each command takes one beat on the timeline.</p></li>
+      <li lang="en"><b>Press Start</b><p>You don't control Mou in real time. Guards and cameras follow their rounds, Mou follows your plan.</p></li>
+      <li lang="en"><b>Fix it and try again</b><p>Spotted? Edit the plan and go again. Use fewer commands and grab the golden fish for three stars.</p></li>
+    </ol>
+  </section>
+
+  <!-- ============ MONDI ============ -->
+  <section class="block">
+    <h2>
+      <span lang="it">Sette mondi, settanta livelli</span>
+      <span lang="en">Seven worlds, seventy levels</span>
+    </h2>
+    <ul class="worlds">
+      <li><i style="--c:#8DB68C"></i><span lang="it">Il Cortile</span><span lang="en">The Courtyard</span><em class="tag"><span lang="it">Gratis</span><span lang="en">Free</span></em></li>
+      <li><i style="--c:#C08A5E"></i><span lang="it">Il Museo</span><span lang="en">The Museum</span><em class="tag"><span lang="it">Gratis</span><span lang="en">Free</span></em></li>
+      <li><i style="--c:#A9CBD6"></i><span lang="it">Il Laboratorio</span><span lang="en">The Laboratory</span></li>
+      <li><i style="--c:#F2A65A"></i><span lang="it">La casa di Jack O’ Lantern</span><span lang="en">Jack O’ Lantern’s House</span></li>
+      <li><i style="--c:#E2705E"></i><span>Santa Crisis</span></li>
+      <li><i style="--c:#8390CB"></i><span lang="it">Da grandi poteri…</span><span lang="en">With Great Power…</span></li>
+      <li><i style="--c:#9A86C4"></i><span>Abracadabra</span></li>
+    </ul>
+    <p class="worlds-note">
+      <span lang="it">Nei mondi premium puoi entrare guardando un video a premio, quando lo scegli tu, oppure acquistare il mondo una volta per sempre.</span>
+      <span lang="en">You can enter premium worlds by watching a rewarded video, only when you choose to, or buy the world once and keep it forever.</span>
+    </p>
+  </section>
+
+  <!-- ============ PERCHÉ ============ -->
+  <section class="block">
+    <h2>
+      <span lang="it">Fatto con cura</span>
+      <span lang="en">Made with care</span>
+    </h2>
+    <ul class="facts">
+      <li lang="it"><b>Ogni livello ha una soluzione</b><p>Tutti i 70 livelli sono verificati da un risolutore automatico, e il par è il vero minimo di comandi.</p></li>
+      <li lang="it"><b>Nessuna pubblicità a sorpresa</b><p>Niente banner, niente annunci a tutto schermo. I video partono solo se li chiedi tu.</p></li>
+      <li lang="it"><b>14 skin per Mou</b><p>Sei si guadagnano completando i mondi, sette si possono acquistare.</p></li>
+      <li lang="it"><b>Nessun account</b><p>Progressi e impostazioni restano sul tuo telefono. In italiano e in inglese.</p></li>
+
+      <li lang="en"><b>Every level is solvable</b><p>All 70 levels are checked by an automatic solver, and par is the true minimum number of commands.</p></li>
+      <li lang="en"><b>No surprise ads</b><p>No banners, no full-screen ads. Videos only play when you ask for them.</p></li>
+      <li lang="en"><b>14 skins for Mou</b><p>Six are earned by completing worlds, seven can be purchased.</p></li>
+      <li lang="en"><b>No account</b><p>Progress and settings stay on your phone. In English and Italian.</p></li>
+    </ul>
+  </section>
+
+  <!-- ============ CTA FINALE ============ -->
+  <section class="final">
+    <h2>
+      <span lang="it">Mou è pronto. Il piano è tuo.</span>
+      <span lang="en">Mou is ready. The plan is yours.</span>
+    </h2>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.digitalducks.chaoswhiskers" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z" fill="currentColor"/></svg>
+      <span lang="it">Scarica su Google Play</span>
+      <span lang="en">Get it on Google Play</span>
+    </a>
+  </section>
+
+  <footer>
+    <span>© 2026 <span class="placeholder">Digital Ducks</span></span>
+    <nav>
+      <a href="privacy.html"><span lang="it">Privacy</span><span lang="en">Privacy</span></a>
+      <a href="mailto:chaoswhiskers@digitalducks.space"><span lang="it">Contatti</span><span lang="en">Contact</span></a>
+    </nav>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('[data-set-lang]');
+    var titles = {
+      it: 'Chaos Whiskers · La grande fuga di Mou',
+      en: 'Chaos Whiskers · Mou’s Great Escape'
+    };
+
+    function setLang(lang) {
+      document.body.dataset.lang = lang;
+      document.documentElement.lang = lang;
+      document.title = titles[lang];
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+      });
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.dataset.setLang); });
+    });
+
+    var preferred = (navigator.language || 'it').toLowerCase();
+    setLang(preferred.indexOf('it') === 0 ? 'it' : 'en');
+  })();
+</script>
+</body>
+</html>
