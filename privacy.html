@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F5EDE1">
+<meta name="description" content="Informativa sulla Privacy di Chaos Whiskers — Chaos Whiskers Privacy Policy">
+<title>Chaos Whiskers · Privacy Policy</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F5EDE1'/%3E%3Cpath d='M20 22l-3-10 11 6h8l11-6-3 10a14 12 0 1 1-24 0z' fill='%23F2A65A'/%3E%3Ccircle cx='26' cy='31' r='3' fill='%233C3346'/%3E%3Ccircle cx='38' cy='31' r='3' fill='%233C3346'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  :root{
+    --paper:#F5EDE1;
+    --paper2:#EADFCE;
+    --card:#FFFDF8;
+    --ink:#3C3346;
+    --ink-soft:#6C6275;
+    --accent:#F2A65A;
+    --accent-d:#D9823A;
+    --accent-text:#B5621F;
+    --good:#79BE9C;
+    --gold:#E9B949;
+    --line:#DFD0B8;
+    --sh:0 2px 0 rgba(60,51,70,.10), 0 8px 20px rgba(60,51,70,.08);
+    --round: ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --rail-x: 22px;
+    --gutter: 76px;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    padding:0 20px 96px;
+    padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px));
+    font-family:var(--round);
+    font-size:1.0625rem;
+    line-height:1.7;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 1px 1px, rgba(60,51,70,.07) 1px, transparent 1.5px) 0 0/22px 22px,
+      var(--paper);
+  }
+
+  ::selection{ background:var(--accent); color:#3B2A14; }
+
+  a{ color:var(--accent-text); font-weight:600; text-underline-offset:3px; text-decoration-thickness:1.5px; }
+  a:hover{ color:var(--ink); }
+
+  :focus-visible{ outline:3px solid var(--accent-d); outline-offset:3px; border-radius:6px; }
+
+  /* ---------- Testata ---------- */
+
+  .masthead{
+    max-width:720px;
+    margin:0 auto;
+    padding:clamp(48px,10vw,88px) 0 clamp(36px,6vw,56px);
+    padding-top:calc(clamp(48px,10vw,88px) + env(safe-area-inset-top, 0px));
+    text-align:center;
+  }
+
+  .cat{
+    display:block;
+    width:84px;
+    height:84px;
+    margin:0 auto 18px;
+    filter:drop-shadow(0 6px 12px rgba(217,130,58,.25));
+  }
+
+  .title{
+    margin:0;
+    font-size:clamp(2.6rem,11vw,3.6rem);
+    line-height:.95;
+    font-weight:800;
+    letter-spacing:-.03em;
+  }
+  .title span{ display:block; color:var(--accent-d); }
+
+  .kicker{
+    margin:18px 0 0;
+    font-weight:700;
+    font-size:1.0625rem;
+  }
+
+  .tagline{
+    margin:6px auto 0;
+    max-width:38ch;
+    color:var(--ink-soft);
+  }
+
+  .stamp{
+    display:inline-block;
+    margin:22px 0 0;
+    padding:5px 14px;
+    border-radius:999px;
+    background:var(--paper2);
+    font-size:.8125rem;
+    font-weight:600;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Selettore lingua ---------- */
+
+  .lang-switch{ display:none; }
+  .js .lang-switch{
+    display:flex;
+    width:fit-content;
+    margin-left:auto;
+    margin-right:auto;
+    gap:4px;
+    margin-top:26px;
+    padding:4px;
+    border-radius:999px;
+    background:var(--card);
+    box-shadow:var(--sh);
+  }
+  .lang-switch button{
+    appearance:none;
+    border:0;
+    padding:9px 20px;
+    border-radius:999px;
+    background:transparent;
+    color:var(--ink-soft);
+    font:inherit;
+    font-size:.9375rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:background-color .15s ease, color .15s ease;
+  }
+  .lang-switch button:hover{ color:var(--ink); }
+  .lang-switch button[aria-pressed="true"]{
+    background:var(--accent);
+    color:#3B2A14;
+    box-shadow:0 2px 0 var(--accent-d);
+  }
+
+  /* ---------- In breve ---------- */
+
+  .brief{
+    max-width:720px;
+    margin:0 auto 64px;
+    padding:26px 28px;
+    border-radius:18px;
+    background:var(--card);
+    box-shadow:var(--sh);
+  }
+  .brief h2{
+    margin:0 0 14px;
+    font-size:.8125rem;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--accent-text);
+  }
+  .brief ul{ margin:0; padding:0; list-style:none; display:grid; gap:12px; }
+  .brief li{ position:relative; padding-left:28px; }
+  .brief li::before{
+    content:"";
+    position:absolute;
+    left:2px;
+    top:.5em;
+    width:12px;
+    height:12px;
+    border-radius:4px;
+    background:var(--good);
+    box-shadow:0 2px 0 #4F9C79;
+  }
+
+  /* ---------- Documento sulla linea del tempo ---------- */
+
+  .policy{
+    position:relative;
+    max-width:720px;
+    margin:0 auto;
+    padding-left:var(--gutter);
+  }
+
+  .policy::before{
+    content:"";
+    position:absolute;
+    left:var(--rail-x);
+    top:10px;
+    bottom:10px;
+    width:4px;
+    margin-left:-2px;
+    border-radius:4px;
+    background:repeating-linear-gradient(180deg, var(--line) 0 10px, transparent 10px 18px);
+  }
+
+  .policy h2{
+    position:relative;
+    margin:52px 0 12px;
+    font-size:1.25rem;
+    font-weight:800;
+    line-height:1.3;
+    letter-spacing:-.01em;
+  }
+  .policy section > h2:first-of-type{ margin-top:0; }
+
+  .num{
+    position:absolute;
+    left:calc(var(--rail-x) - var(--gutter));
+    top:-1px;
+    transform:translateX(-50%);
+    min-width:40px;
+    padding:3px 0;
+    border-radius:10px;
+    background:var(--accent);
+    box-shadow:0 3px 0 var(--accent-d);
+    color:#3B2A14;
+    font-size:.8125rem;
+    font-weight:800;
+    text-align:center;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .policy p{ margin:0 0 16px; }
+  .policy ul{ margin:0 0 16px; padding-left:1.2em; }
+  .policy li{ margin-bottom:6px; }
+  .policy li::marker{ color:var(--accent-d); }
+
+  .service{
+    margin:0 0 12px;
+    padding:14px 18px;
+    border-radius:14px;
+    background:var(--card);
+    box-shadow:0 1px 0 rgba(60,51,70,.08);
+  }
+  .service strong{ display:block; }
+
+  .contact{
+    padding:22px 24px;
+    border-radius:18px;
+    background:var(--card);
+    box-shadow:var(--sh);
+  }
+  .contact p{ margin:0; }
+
+  .placeholder{
+    display:inline-block;
+    padding:1px 8px;
+    border-radius:6px;
+    background:rgba(242,166,90,.2);
+    color:var(--accent-text);
+    font-weight:700;
+  }
+  .contact .placeholder + .placeholder{ margin-top:6px; }
+
+  .colophon{
+    max-width:720px;
+    margin:72px auto 0;
+    text-align:center;
+    font-size:.875rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Lingue ---------- */
+
+  body[data-lang="it"] [lang="en"]{ display:none; }
+  body[data-lang="en"] [lang="it"]{ display:none; }
+
+  /* ---------- Ingresso ---------- */
+
+  .masthead > *{ animation:pop .55s cubic-bezier(.2,.8,.3,1.15) backwards; }
+  .masthead > *:nth-child(2){ animation-delay:.05s; }
+  .masthead > *:nth-child(3){ animation-delay:.10s; }
+  .masthead > *:nth-child(4){ animation-delay:.15s; }
+  .masthead > *:nth-child(5){ animation-delay:.20s; }
+  .masthead > *:nth-child(6){ animation-delay:.25s; }
+
+  @keyframes pop{
+    from{ opacity:0; transform:translateY(10px) scale(.98); }
+    to{ opacity:1; transform:none; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .masthead > *{ animation:none; }
+    *{ transition-duration:.01ms !important; }
+  }
+
+  /* ---------- Mobile ---------- */
+
+  @media (max-width:600px){
+    body{ font-size:1rem; padding-left:16px; padding-right:16px; }
+    :root{ --rail-x:16px; --gutter:50px; }
+    .num{ min-width:32px; font-size:.75rem; }
+    .brief{ padding:22px 20px; margin-bottom:48px; }
+    .service, .contact{ padding:16px; }
+  }
+
+  /* ---------- Stampa ---------- */
+
+  @media print{
+    body{ background:#fff; padding:0; }
+    .lang-switch, .policy::before, .cat{ display:none !important; }
+    .policy{ padding-left:0; max-width:none; }
+    .num{ position:static; transform:none; display:inline-block; margin-right:8px; box-shadow:none; }
+    .brief, .service, .contact{ box-shadow:none; border:1px solid #ddd; }
+    body[data-lang="it"] [lang="en"],
+    body[data-lang="en"] [lang="it"]{ display:revert; }
+  }
+</style>
+</head>
+
+<body data-lang="it">
+
+  <header class="masthead">
+    <svg class="cat" viewBox="0 0 64 64" aria-hidden="true">
+      <rect width="64" height="64" rx="16" fill="#FFFDF8"/>
+      <path d="M20 22l-3-10 11 6h8l11-6-3 10a14 12 0 1 1-24 0z" fill="#F2A65A"/>
+      <circle cx="26" cy="31" r="3" fill="#3C3346"/>
+      <circle cx="38" cy="31" r="3" fill="#3C3346"/>
+    </svg>
+
+    <h1 class="title">Chaos<span>Whiskers</span></h1>
+
+    <p class="kicker">
+      <span lang="it">Informativa sulla privacy</span>
+      <span lang="en">Privacy policy</span>
+    </p>
+
+    <p class="tagline">
+      <span lang="it">Mou pianifica la fuga. Tu decidi quali dati condividere.</span>
+      <span lang="en">Mou plans the escape. You decide what data to share.</span>
+    </p>
+
+    <p class="stamp">
+      <span lang="it">Ultimo aggiornamento: 30 settembre 2026</span>
+      <span lang="en">Last updated: September 30, 2026</span>
+    </p>
+
+    <nav class="lang-switch" aria-label="Lingua / Language">
+      <button type="button" data-set-lang="it" aria-pressed="true">Italiano</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">English</button>
+    </nav>
+  </header>
+
+  <!-- ============ IN BREVE / AT A GLANCE ============ -->
+  <aside class="brief" aria-labelledby="brief-it brief-en">
+    <h2 id="brief-it" lang="it">In breve</h2>
+    <h2 id="brief-en" lang="en">At a glance</h2>
+
+    <ul lang="it">
+      <li>Nessun account: non ti chiediamo nome, e-mail o numero di telefono.</li>
+      <li>Progressi, stelle, skin e impostazioni restano sul tuo telefono.</li>
+      <li>La pubblicità compare solo quando scegli tu di guardare un video a premio, mai da sola.</li>
+      <li>I pagamenti sono gestiti da Google Play: non vediamo i dati della tua carta.</li>
+    </ul>
+    <ul lang="en">
+      <li>No account: we never ask for your name, email or phone number.</li>
+      <li>Progress, stars, skins and settings stay on your phone.</li>
+      <li>Ads only appear when you choose to watch a rewarded video, never on their own.</li>
+      <li>Payments are handled by Google Play: we never see your card details.</li>
+    </ul>
+  </aside>
+
+  <main class="policy">
+
+    <!-- ============ ITALIANO ============ -->
+    <section lang="it">
+
+      <h2><span class="num">01</span>Titolare del trattamento</h2>
+      <p>La presente informativa descrive come l'app Chaos Whiskers (in precedenza nota come “Effetto Farfalla”) tratta i dati quando la utilizzi. Il titolare del trattamento è lo sviluppatore indicato nella sezione Contatti.</p>
+
+      <h2><span class="num">02</span>Nessun account</h2>
+      <p>Chaos Whiskers non richiede né fornisce account utente. L'app non ti chiede e non raccoglie intenzionalmente nome, indirizzo e-mail, numero di telefono o altre informazioni che ti identificano direttamente. Lo sviluppatore non gestisce propri server che ricevono dati di gioco.</p>
+
+      <h2><span class="num">03</span>Dati salvati sul dispositivo</h2>
+      <p>Per funzionare, l'app memorizza localmente sul tuo dispositivo:</p>
+      <ul>
+        <li>livelli completati, stelle ottenute e migliori risultati;</li>
+        <li>indizi disponibili, mondi sbloccati e skin possedute o selezionate;</li>
+        <li>preferenze come lingua, audio, vibrazione e velocità di gioco;</li>
+        <li>le schermate introduttive già viste.</li>
+      </ul>
+      <p>Questi dati non vengono inviati allo sviluppatore. La lingua iniziale viene letta dalle impostazioni del telefono, sempre in locale. Suoni e vibrazioni sono generati dal dispositivo e non comportano alcuna raccolta di dati.</p>
+
+      <h2><span class="num">04</span>Pubblicità con video a premio</h2>
+      <p>Chaos Whiskers mostra annunci esclusivamente sotto forma di video a premio, e solo quando sei tu a sceglierlo, per ottenere un indizio o accedere a un livello di un mondo premium. L'app non mostra banner né annunci a schermo intero che partono da soli.</p>
+      <p>I video sono forniti da <strong>Google AdMob</strong>. Per mostrare e misurare gli annunci e prevenire le frodi, Google può raccogliere dati come l'ID pubblicità del dispositivo, l'indirizzo IP, informazioni tecniche sul dispositivo e sul sistema operativo, e le interazioni con gli annunci. Se hai dato il consenso, gli annunci possono essere personalizzati; in caso contrario Google mostra annunci non personalizzati, secondo le proprie regole.</p>
+      <p>Questi dati sono trattati da Google in qualità di titolare autonomo, secondo le sue norme: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">come Google utilizza i dati dei siti e delle app dei partner</a> e l'<a href="https://policies.google.com/privacy" rel="noopener">informativa sulla privacy di Google</a>.</p>
+
+      <h2><span class="num">05</span>Consenso e opzioni privacy degli annunci</h2>
+      <p>Se ti trovi nello Spazio Economico Europeo, nel Regno Unito o in Svizzera, al primo avvio l'app ti mostra il modulo di consenso di Google, dove puoi accettare o rifiutare l'uso dei dati a fini pubblicitari. Se il consenso richiesto non è disponibile, i video a premio non vengono caricati.</p>
+      <p>Puoi modificare la tua scelta in qualsiasi momento da <strong>Impostazioni → Privacy degli annunci</strong>. Puoi anche reimpostare o eliminare l'ID pubblicità dalle impostazioni di Android.</p>
+
+      <h2><span class="num">06</span>Acquisti in-app</h2>
+      <p>Mondi e skin possono essere acquistati tramite <strong>Google Play</strong>. Il pagamento è gestito interamente da Google: lo sviluppatore non riceve né conserva i dati della tua carta o del tuo metodo di pagamento.</p>
+      <p>Per confermare che un acquisto è valido, l'app invia la ricevuta di acquisto fornita da Google Play (identificativo del prodotto e token dell'acquisto) a un servizio di verifica delle ricevute. Tramite Google Play Console lo sviluppatore può inoltre vedere i dati dell'ordine necessari alla gestione di acquisti e rimborsi, come l'identificativo dell'ordine, il prodotto, il prezzo e il paese.</p>
+      <p>Gli acquisti sono legati al tuo account Google e possono essere ripristinati con il pulsante <strong>Ripristina acquisti</strong>.</p>
+
+      <h2><span class="num">07</span>Servizi di terze parti</h2>
+      <p class="service"><strong>Google AdMob</strong>Video a premio e gestione del consenso pubblicitario.</p>
+      <p class="service"><strong>Google Play</strong>Pagamenti, acquisti in-app e ripristino degli acquisti.</p>
+      <p class="service"><strong><span class="placeholder">[SERVIZIO DI VERIFICA RICEVUTE]</span></strong>Verifica della validità delle ricevute di acquisto.</p>
+      <p>Durante le normali comunicazioni via Internet, questi fornitori ricevono informazioni tecniche necessarie a gestire le richieste di rete, come l'indirizzo IP, secondo le rispettive informative.</p>
+
+      <h2><span class="num">08</span>Analytics e profilazione</h2>
+      <p>Chaos Whiskers non integra servizi di analytics e non traccia come giochi. Lo sviluppatore non crea profili degli utenti. L'eventuale personalizzazione degli annunci è gestita da Google e dipende dal consenso descritto sopra.</p>
+
+      <h2><span class="num">09</span>Conservazione ed eliminazione</h2>
+      <p>I dati di gioco restano sul dispositivo finché non li cancelli. <strong>Azzera progressi</strong> nelle impostazioni elimina livelli, stelle e indizi, conservando acquisti e preferenze. Cancellare i dati dell'app o disinstallarla elimina tutti i dati locali; gli acquisti restano associati al tuo account Google.</p>
+      <p>I dati raccolti da Google e dal servizio di verifica sono conservati secondo le rispettive politiche.</p>
+
+      <h2><span class="num">10</span>I tuoi diritti</h2>
+      <p>Ai sensi del Regolamento (UE) 2016/679 (GDPR) hai diritto di accesso, rettifica, cancellazione, limitazione e opposizione al trattamento, e di revocare il consenso in qualsiasi momento senza pregiudicare la liceità del trattamento precedente. Poiché lo sviluppatore non conserva dati di gioco sui propri server, la maggior parte di questi diritti si esercita direttamente dall'app o dal tuo dispositivo; per i dati trattati da Google puoi rivolgerti a Google. Per qualsiasi richiesta puoi scrivere ai contatti indicati sotto.</p>
+      <p>Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>) o all'autorità di controllo del tuo paese.</p>
+
+      <h2><span class="num">11</span>Minori</h2>
+      <p>Chaos Whiskers non è rivolta principalmente ai minori di 13 anni e non raccoglie intenzionalmente informazioni personali che li identificano direttamente. Se ritieni che un minore ci abbia fornito dati personali, contattaci e provvederemo a eliminarli.</p>
+
+      <h2><span class="num">12</span>Sicurezza</h2>
+      <p>Le comunicazioni con i servizi esterni avvengono tramite connessioni HTTPS. L'app segue un approccio di minimizzazione dei dati e trasmette solo quanto necessario per le funzioni che scegli di usare.</p>
+
+      <h2><span class="num">13</span>Modifiche alla presente informativa</h2>
+      <p>Questa informativa può essere aggiornata se cambiano le funzioni dell'app, i servizi di terze parti o le modalità di trattamento dei dati. La versione aggiornata sarà pubblicata a questo stesso indirizzo, con la nuova data di aggiornamento.</p>
+
+      <h2><span class="num">14</span>Contatti</h2>
+      <p>Per domande su questa informativa o per esercitare i tuoi diritti:</p>
+      <div class="contact">
+        <p><span class="placeholder">[NOME SVILUPPATORE / SOCIETÀ]</span></p>
+        <p><span class="placeholder">[EMAIL DI CONTATTO]</span></p>
+      </div>
+    </section>
+
+    <!-- ============ ENGLISH ============ -->
+    <section lang="en">
+
+      <h2><span class="num">01</span>Data controller</h2>
+      <p>This policy describes how the Chaos Whiskers app (formerly known as “Effetto Farfalla”) handles data when you use it. The data controller is the developer listed in the Contact section.</p>
+
+      <h2><span class="num">02</span>No account</h2>
+      <p>Chaos Whiskers does not require or provide user accounts. The app does not ask for, or intentionally collect, your name, email address, phone number, or any other information that directly identifies you. The developer does not operate its own servers that receive game data.</p>
+
+      <h2><span class="num">03</span>Data stored on your device</h2>
+      <p>To work, the app stores the following locally on your device:</p>
+      <ul>
+        <li>completed levels, stars earned and best results;</li>
+        <li>available hints, unlocked worlds, and owned or selected skins;</li>
+        <li>preferences such as language, sound, vibration and game speed;</li>
+        <li>which introductory screens you have already seen.</li>
+      </ul>
+      <p>This data is not sent to the developer. The initial language is read from your phone settings, locally. Sounds and vibration are generated on the device and involve no data collection.</p>
+
+      <h2><span class="num">04</span>Rewarded video ads</h2>
+      <p>Chaos Whiskers shows ads only as rewarded videos, and only when you choose to watch one, to get a hint or to enter a level in a premium world. The app does not show banners or full-screen ads that start on their own.</p>
+      <p>Videos are provided by <strong>Google AdMob</strong>. To serve and measure ads and to prevent fraud, Google may collect data such as your device's advertising ID, IP address, technical information about your device and operating system, and your interactions with ads. If you have given consent, ads may be personalized; otherwise Google serves non-personalized ads, according to its own rules.</p>
+      <p>This data is processed by Google as an independent controller, under its own policies: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">how Google uses information from partner sites and apps</a> and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.</p>
+
+      <h2><span class="num">05</span>Consent and ad privacy options</h2>
+      <p>If you are in the European Economic Area, the United Kingdom or Switzerland, the app shows Google's consent form on first launch, where you can accept or refuse the use of data for advertising. If the required consent is not available, rewarded videos are not loaded.</p>
+      <p>You can change your choice at any time from <strong>Settings → Ad privacy options</strong>. You can also reset or delete your advertising ID in Android settings.</p>
+
+      <h2><span class="num">06</span>In-app purchases</h2>
+      <p>Worlds and skins can be purchased through <strong>Google Play</strong>. Payment is handled entirely by Google: the developer never receives or stores your card or payment method details.</p>
+      <p>To confirm that a purchase is valid, the app sends the purchase receipt provided by Google Play (product identifier and purchase token) to a receipt verification service. Through Google Play Console, the developer can also see the order details needed to manage purchases and refunds, such as the order ID, product, price and country.</p>
+      <p>Purchases are tied to your Google account and can be restored with the <strong>Restore purchases</strong> button.</p>
+
+      <h2><span class="num">07</span>Third-party services</h2>
+      <p class="service"><strong>Google AdMob</strong>Rewarded videos and advertising consent management.</p>
+      <p class="service"><strong>Google Play</strong>Payments, in-app purchases and purchase restoration.</p>
+      <p class="service"><strong><span class="placeholder">[RECEIPT VERIFICATION SERVICE]</span></strong>Verification of purchase receipts.</p>
+      <p>During normal Internet communications, these providers receive technical information needed to handle network requests, such as your IP address, in accordance with their respective policies.</p>
+
+      <h2><span class="num">08</span>Analytics and profiling</h2>
+      <p>Chaos Whiskers does not include analytics services and does not track how you play. The developer does not build user profiles. Any ad personalization is handled by Google and depends on the consent described above.</p>
+
+      <h2><span class="num">09</span>Retention and deletion</h2>
+      <p>Game data stays on your device until you delete it. <strong>Reset progress</strong> in Settings deletes levels, stars and hints while keeping purchases and preferences. Clearing the app's data or uninstalling it deletes all local data; purchases remain tied to your Google account.</p>
+      <p>Data collected by Google and by the verification service is retained according to their respective policies.</p>
+
+      <h2><span class="num">10</span>Your rights</h2>
+      <p>Under Regulation (EU) 2016/679 (GDPR), you have the right to access, rectify, erase, restrict and object to the processing of your data, and to withdraw consent at any time without affecting the lawfulness of prior processing. Since the developer does not store game data on its own servers, most of these rights are exercised directly in the app or on your device; for data processed by Google, you can contact Google. For any request, you can write to the contact below.</p>
+      <p>You also have the right to lodge a complaint with the Italian Data Protection Authority (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>) or with the supervisory authority in your country.</p>
+
+      <h2><span class="num">11</span>Children's privacy</h2>
+      <p>Chaos Whiskers is not primarily directed at children under 13 and does not intentionally collect personal information that directly identifies them. If you believe a child has provided us with personal data, please contact us and we will delete it.</p>
+
+      <h2><span class="num">12</span>Security</h2>
+      <p>Communications with external services use HTTPS connections. The app follows a data minimization approach and transmits only what is needed for the features you choose to use.</p>
+
+      <h2><span class="num">13</span>Changes to this policy</h2>
+      <p>This policy may be updated if the app's features, third-party services or data practices change. The updated version will be published at this same address, with a new update date.</p>
+
+      <h2><span class="num">14</span>Contact</h2>
+      <p>For questions about this policy or to exercise your rights:</p>
+      <div class="contact">
+        <p><span class="placeholder">[DEVELOPER / COMPANY NAME]</span></p>
+        <p><span class="placeholder">[CONTACT EMAIL]</span></p>
+      </div>
+    </section>
+
+  </main>
+
+  <p class="colophon">
+    <span lang="it">Chaos Whiskers · La grande fuga di Mou</span>
+    <span lang="en">Chaos Whiskers · Mou's great escape</span>
+  </p>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('[data-set-lang]');
+
+    function setLang(lang) {
+      document.body.dataset.lang = lang;
+      document.documentElement.lang = lang;
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+      });
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.dataset.setLang); });
+    });
+
+    var preferred = (navigator.language || 'it').toLowerCase();
+    setLang(preferred.indexOf('it') === 0 ? 'it' : 'en');
+  })();
+</script>
+
+</body>
+</html>
