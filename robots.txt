@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chaoswhiskers.digitalducks.space/sitemap.xml
